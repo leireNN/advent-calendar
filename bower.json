@@ -1,0 +1,22 @@
+{
+  "name": "bye",
+  "version": "0.0.0",
+  "authors": [
+    "leireNN <polo@neatnait.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "google-web-components": "googlewebcomponents/google-web-components#~1.1.1",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.1.7",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.1.7",
+    "paper-material": "PolymerElements/paper-material#~1.0.6",
+    "google-youtube": "GoogleWebComponents/google-youtube#~1.2.1"
+  }
+}

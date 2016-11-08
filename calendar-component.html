@@ -1,0 +1,197 @@
+<dom-module  id="calendar-component">
+  <template>
+    <style>
+      .body{
+        text-align: center;
+      }
+      .calendar {
+        width: 800px;
+        max-height:100%;
+        max-width:100%;
+        margin:0 auto;
+        background: #999;
+        border-style: solid;
+        border-color: #86bf9f;
+      }
+      .calendar-header {
+        width:100%;
+        overflow: hidden;
+      }
+      .day-label {
+        width:11.0371%;
+        font-family: "quimby-mayoral", sans-serif;
+        color: #ffffff;
+        font-size: 40px;
+        line-height: 0.5em;
+        float:left;
+        text-align:right;
+        padding:10px;
+        font-size:18px;
+        border-style: solid;
+        border-color: #86bf9f;
+        letter-spacing:1px;
+        background: #d72738;
+      }
+      .row {
+        position: relative;
+        width: 800px;
+        max-width: 100%;
+        height: 30%;
+        overflow: hidden;
+        background: #86bf9f;
+        display: block;
+      }
+      .day {
+        width:13.85%;
+        height:100px;
+        background: #efdebd;
+        display: inline-block;
+        background-image: url(http://www.designcouch.com/assets/images/christmaspresent11.svg);
+        background-size: 30%;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      .date {
+        position: absolute;
+        right: 5px;
+        top: 10px;
+      }
+    </style>
+    <div class="calendar">
+      <div class="calendar-header">
+        <div class="day-label">Lunes</div>
+        <div class="day-label">Martes</div>
+        <div class="day-label">Miercoles</div>
+        <div class="day-label">Jueves</div>
+        <div class="day-label">Viernes</div>
+        <div class="day-label">Sabado</div>
+        <div class="day-label">Domingo</div>
+      </div>
+      <template is="dom-repeat" items="{{week}}">
+        <div class="row">
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+          <div class="day"></div>
+        </div>
+      </template>
+    </div>
+  </template>
+  <script type="text/javascript">
+  Polymer({
+    is: "calendar-component",
+    properties:{
+      someText:{
+        type: String,
+        value: "My text!"
+      },
+      months:{
+        type: Array,
+        value: []
+      },
+      week:{
+        type: Array,
+        notify: true,
+        value: []
+      },
+      year:{
+        type: Number,
+        value: 1
+      },
+      month:{
+        type: Number,
+        value: 1
+      }
+    },
+
+    attached: function() {
+
+    },
+
+    _weekCount: function(year, month_number) {
+
+        // month_number is in the range 1..12
+
+        var firstOfMonth = new Date(year, month_number-1, 1);
+        var lastOfMonth = new Date(year, month_number, 0);
+
+        var used = firstOfMonth.getDay() + lastOfMonth.getDate();
+
+        return Math.ceil( used / 7);
+    },
+
+    ready: function() {
+      this.days = [
+          {first: 'Bob', last: 'Smith'},
+          {first: 'Sally', last: 'Johnson'}
+      ];
+      var d = new Date();
+      var month = new Array();
+      month[0] = {
+        name: "January",
+        days: 31
+      };
+      month[1] = {
+        name: "February",
+        days: 28,
+      };
+      month[2] = {
+        name: "March",
+        days: 31
+      };
+      month[3] = {
+        name: "April",
+        days: 30
+      };
+      month[4] = {
+        name: "May",
+        days: 31
+      };
+      month[5] = {
+        name: "June",
+        days:30
+      };
+      month[6] = {
+        name: "July",
+        days:31
+      };
+      month[7] = {
+        name: "August",
+        days:30
+      };
+      month[8] = {
+        name: "September",
+        days: 31
+      };
+      month[9] = {
+        name: "October",
+        days: 30
+      };
+      month[10] = {
+        name: "November",
+        days: 31
+      };
+      month[11] = {
+        name: "December",
+        days: 30
+      };
+      this.months = this.months.concat(month);
+      var n = this.months[d.getMonth()];
+
+      var d = new Date();
+      this.year = d.getYear();
+      this.month = d.getMonth();
+
+      for(i= 0; i <this._weekCount(this.year, this.month); i++){
+        this.week.push("week");
+      }
+      console.log("Number of weeks: " + this.week);
+
+      console.log("Mes: " + n.name);
+    }
+  });
+  </script>
+</dom-module>

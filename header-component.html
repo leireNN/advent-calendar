@@ -1,0 +1,77 @@
+<dom-module id="header-component">
+  <template>
+    <style>
+    @import url(http://fonts.googleapis.com/css?family=Sacramento|Montserrat);
+      .header-cadeau {
+        position: relative;
+        width: auto;
+        height: 100px;
+        background-color: red;
+        border-radius: 10px;
+      }
+      .lace {
+        position: absolute;
+        right:0;
+        top:0;
+        width: 25%;
+        height: 120%;
+        background: transparent;
+      }
+      .lace-left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: green;
+        border-radius: 86% 177% 197% 95%;
+      }
+      .lace-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: green;
+        border-radius: 181% 66% 118% 186%;
+      }
+      .lace-mid {
+        position: absolute;
+        right: 45%;
+        top:22%;
+        width: 10%;
+        height: 60%;
+        background: red;
+        border-radius: 50% 50%;
+      }
+      .header-cadeau h1 {
+        position: absolute;
+        right: 50%;
+        top: -33%;
+        font-family: 'Sacramento', cursive;
+        font-size: 350%;
+        color: white;
+      }
+    </style>
+    <div class="header-cadeau">
+      <h1>{{someText}}</h1>
+      <div class="lace">
+        <div class="lace-left"></div>
+        <div class="lace-right"></div>
+        <div class="lace-mid"></div>
+
+      </div>
+    </div>
+  </template>
+  <script type="text/javascript">
+    Polymer({
+      is: "header-component",
+      properties:{
+        someText:{
+          type: String,
+          value: "My text!"
+        }
+      }
+    });
+  </script>
+</dom-module>
